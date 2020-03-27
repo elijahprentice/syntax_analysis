@@ -8,6 +8,7 @@ int lex();
 void factor();
 void term();
 void expr();
+void stmt();
 
 char nextChar;
 char lexeme[100];
@@ -136,7 +137,12 @@ int lex(){
 void factor() {
   printf("Enter <factor>\n");
 
-  if (nextToken == IDENT || nextToken == INT_LIT){
+  if (nextToken == IDENT){
+    lex();
+    if(nextToken == ASSIGN_OP){
+      stmt();
+    }
+  } else if (nextToken == INT_LIT){
     lex();
   } else {
     if (nextToken == LEFT_PAREN) {
@@ -176,6 +182,13 @@ void expr() {
     term();
   }
   printf("Exit <expr>\n");
+}
+
+void stmt(){
+    printf("Enter <stmt>\n");
+    lex();
+    expr();
+    printf("Exit <stmt>\n");
 }
 
 int main(){

@@ -100,7 +100,7 @@ void getChar() {
 }
 
 void getNonBlank() {
-  while (isblank(nextChar)){
+  while (isspace(nextChar) && nextChar != '\n'){
     getChar();
   }
 }

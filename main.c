@@ -19,6 +19,7 @@ FILE *in_fp, *fopen();
 #define LETTER 0
 #define DIGIT 1
 #define UNKNOWN 99
+#define NEW_LINE 2
 
 #define INT_LIT 10
 #define IDENT 11
@@ -55,6 +56,10 @@ int lookup(char ch) {
     case '/':
       addChar();
       nextToken = DIV_OP;
+      break;
+    case '=':
+      addChar();
+      nextToken = ASSIGN_OP;
       break;
     default:
       addChar();

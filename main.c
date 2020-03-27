@@ -196,9 +196,16 @@ int main(){
     printf("ERROR - cannot open front.in \n");
   } else {
     getChar();
-    do {
-      lex();
-      expr();
-    } while (nextToken != EOF);
+    if (charClass == EOF){
+      printf("ERROR - empty file \n");
+    } else {
+      do {
+        lex();
+        if(nextToken != EOF){
+          expr();
+        }
+      } while (nextToken != EOF);
+    }
   }
+  return 0;
 }

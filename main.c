@@ -61,6 +61,13 @@ int lookup(char ch) {
       addChar();
       nextToken = ASSIGN_OP;
       break;
+    case '\n':
+      nextToken = NEW_LINE;
+      lexeme[0] = 'E';
+      lexeme[1] = 'O';
+      lexeme[2] = 'F';
+      lexeme[3] = 0;
+      break;
     default:
       addChar();
       nextToken = EOF;
@@ -93,7 +100,7 @@ void getChar() {
 }
 
 void getNonBlank() {
-  while (isspace(nextChar)){
+  while (isblank(nextChar)){
     getChar();
   }
 }
@@ -135,7 +142,11 @@ int lex(){
       lexeme[3] = 0;
       break;
   }
-  printf("Next token is: %d, Next lexeme is %s\n", nextToken, lexeme);
+  if (nextToken == NEW_LINE){
+    printf("Next token is: -1, Next lexeme is %s\n", lexeme)''
+  } else {
+    printf("Next token is: %d, Next lexeme is %s\n", nextToken, lexeme);
+  }
   return nextToken;
 }
 

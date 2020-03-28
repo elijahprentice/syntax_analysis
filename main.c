@@ -143,7 +143,7 @@ int lex(){
       break;
   }
   if (nextToken == NEW_LINE){
-    printf("Next token is: -1, Next lexeme is %s\n", lexeme)''
+    printf("Next token is: -1, Next lexeme is %s\n", lexeme);
   } else {
     printf("Next token is: %d, Next lexeme is %s\n", nextToken, lexeme);
   }
@@ -217,7 +217,7 @@ int main(){
     } else {
       do {
         lex();
-        if(nextToken != EOF){
+        if(nextToken != EOF && nextToken != NEW_LINE){
           expr();
         }
       } while (nextToken != EOF);

@@ -203,6 +203,7 @@ void expr() {
 void stmt(){
     printf("Enter <stmt>\n");
     lex();
+    lex();
     expr();
     printf("Exit <stmt>\n");
 }
@@ -218,7 +219,7 @@ int main(){
       do {
         lex();
         if(nextToken != EOF && nextToken != NEW_LINE){
-          expr();
+          stmt();
         }
       } while (nextToken != EOF);
     }
